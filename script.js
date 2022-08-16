@@ -34,16 +34,15 @@ form.addEventListener('submit', (event) => {
 })
 
 mostrarProductos.addEventListener('click', () => {
-    divUsers.innerHTML = ""
+    divProductos.innerHTML = ""
     productos.forEach((producto, indice) => {
-        divUsers.innerHTML += `
-            <div class="card" id="user${indice}" style="width: 18rem;margin:3px;">
+        divProductos.innerHTML += `
+            <div class="card" id="producto${indice}" style="width: 18rem;margin:3px;">
                 <div class="card-body">
                     <h5 class="card-title">${producto.nombre}</h5>   
                     <p class="card-text"> ${producto.descripcion}</p>                 
                     <p class="card-text"> $${producto.precio}</p>
-                    <p class="card-text">${producto.stock} disponibles</p>
-                    
+                    <p class="card-text">${producto.stock} disponibles</p>                    
                 </div>
             </div>        
         `        

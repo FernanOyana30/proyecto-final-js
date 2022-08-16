@@ -11,30 +11,31 @@
 <body>    
   <div class="container mt-4 ms-4">
     <form id="form">
-        <div class="mb-3">
-          <label for="text" class="form-label">Nombre del producto</label>
-          <input type="text" class="form-control" id="nombreProducto" required>
-        </div>
-        <div class="mb-3">
-          <label for="text" class="form-label">Descripción</label>
-          <input type="text" class="form-control" id="descProducto" required>
-        </div>
-        <div class="input-group mb-3">
-          <span class="input-group-text">$</span>
-          <input type="number" class="form-control" aria-label="Amount (to the nearest dollar)" id="precioProducto" required>          
-        </div>
-        <div class="mb-3">
-          <label for="number" class="form-label">Stock</label>
-          <input type="number" class="form-control w-25" id="stockProducto" required>
-        </div>
-        <button type="submit" class="btn btn-primary">Confirmar</button>
-      </form>
-</div><br><br>
-
-<div class="container ms-4">
+      <div class="mb-3">
+        <label for="text" class="form-label">Nombre del producto</label>
+        <input type="text" class="form-control" id="nombreProducto" required>
+      </div>
+      <div class="mb-3">
+        <label for="text" class="form-label">Descripción</label>
+        <input type="text" class="form-control" id="descProducto" required>
+      </div>
+      <div class="input-group mb-3">
+        <span class="input-group-text">$</span>
+        <input type="number" class="form-control" aria-label="Amount (to the nearest dollar)" id="precioProducto" required>          
+      </div>
+      <div class="mb-3">
+        <label for="number" class="form-label">Stock</label>
+        <input type="number" class="form-control w-25" id="stockProducto" required>
+      </div>
+      <button type="submit" class="btn btn-primary">Confirmar</button>
+    </form>
+  </div>
+  <br>
+  <br>
+  <div class="container ms-4">
     <button id="mostrarProductos" class="btn btn-secondary">Mis productos en venta</button><br><br>
-    <div id="divUsers" class="row"></div>
-</div>     
+    <div id="divProductos" class="row"></div>
+  </div>     
   <script src="script.js"></script>
 </body>
 </html>
