@@ -26,27 +26,33 @@ form.addEventListener('submit', (event) => {
     const descripcion = document.getElementById("descProducto").value
     const precio = document.getElementById("precioProducto").value
     const stock = document.getElementById("stockProducto").value  
-    const mensajeAlerta = document.getElementById("mensajeAlerta")    
-    const mensajeAlerta2 = document.getElementById("mensajeAlerta2") 
+    const mensajeAlerta = document.getElementById("mensajeAlerta")   
+        
         if(precio < 0 || stock < 0 ){            
             mensajeAlerta.innerHTML = `
-            <div class="alert alert-danger w-100 m-6" role="alert">
-                Introduzca un valor de precio/stock igual o mayor a 0
+            <div class="alert alert-danger  m-6" role="alert">                
+                <p>Introduzca un valor de precio/stock igual o mayor a 0 </p>
             </div>
-            `       
-                       
+            `          
             return
             
         } 
-        else{      
+        if(precio >= 0 || stock >= 0 ){            
+            mensajeAlerta.children[0].remove()
+            const producto = new Producto (nombre, descripcion, precio, stock)
+            productos.push(producto)    
+            localStorage.setItem("productos", JSON.stringify(productos))
+            form.reset()            
+            console.log(nombre, descripcion, precio, stock)
             
+        } 
+        else{ 
             const producto = new Producto (nombre, descripcion, precio, stock)
             productos.push(producto)    
             localStorage.setItem("productos", JSON.stringify(productos))
             form.reset()            
             console.log(nombre, descripcion, precio, stock) 
-                        
-        }      mensajeAlerta.remove() 
+        }      
 })
 
 mostrarProductos.addEventListener('click', () => {
