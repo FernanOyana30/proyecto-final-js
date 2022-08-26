@@ -8,13 +8,13 @@ class Producto {
     }
 }
 
+
+
 let productos = []
 
-if(localStorage.getItem('productos')) {
-    tareas = JSON.parse(localStorage.getItem('productos'))
-} else {
-    localStorage.setItem('productos', JSON.stringify(productos))
-}
+
+localStorage.getItem('productos') ? productos = JSON.parse(localStorage.getItem('productos')) : localStorage.setItem('productos', JSON.stringify(productos))
+
 
 const form = document.getElementById("form")
 const mostrarProductos = document.getElementById("mostrarProductos")
@@ -37,15 +37,16 @@ form.addEventListener('submit', (event) => {
             return
             
         } 
-        if(precio >= 0 || stock >= 0 ){            
-            mensajeAlerta.children[0].remove()
+        
+        if(precio >= 0 || stock >= 0 ){
             const producto = new Producto (nombre, descripcion, precio, stock)
             productos.push(producto)    
             localStorage.setItem("productos", JSON.stringify(productos))
             form.reset()            
-            console.log(nombre, descripcion, precio, stock)
+            console.log(nombre, descripcion, precio, stock)            
             
         } 
+        
         else{ 
             const producto = new Producto (nombre, descripcion, precio, stock)
             productos.push(producto)    
