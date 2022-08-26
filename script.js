@@ -43,7 +43,8 @@ form.addEventListener('submit', (event) => {
             productos.push(producto)    
             localStorage.setItem("productos", JSON.stringify(productos))
             form.reset()            
-            console.log(nombre, descripcion, precio, stock)            
+            console.log(nombre, descripcion, precio, stock)  
+            mensajeAlerta.children[0].remove()          
             
         } 
         
