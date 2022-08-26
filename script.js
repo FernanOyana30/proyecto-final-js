@@ -10,7 +10,9 @@ class Producto {
 
 
 
+
 let productos = []
+
 
 
 localStorage.getItem('productos') ? productos = JSON.parse(localStorage.getItem('productos')) : localStorage.setItem('productos', JSON.stringify(productos))
@@ -26,26 +28,24 @@ form.addEventListener('submit', (event) => {
     const descripcion = document.getElementById("descProducto").value
     const precio = document.getElementById("precioProducto").value
     const stock = document.getElementById("stockProducto").value  
-    const mensajeAlerta = document.getElementById("mensajeAlerta")   
-        
+    const mensajeAlerta = document.getElementById("mensajeAlerta") 
         if(precio < 0 || stock < 0 ){            
             mensajeAlerta.innerHTML = `
             <div class="alert alert-danger  m-6" role="alert">                
                 <p>Introduzca un valor de precio/stock igual o mayor a 0 </p>
             </div>
             `          
-            return
-            
+            return            
         } 
         
         if(precio >= 0 || stock >= 0 ){
+            
             const producto = new Producto (nombre, descripcion, precio, stock)
             productos.push(producto)    
             localStorage.setItem("productos", JSON.stringify(productos))
-            form.reset()            
+            form.reset()
+            mensajeAlerta.children[0].remove()        
             console.log(nombre, descripcion, precio, stock)  
-            mensajeAlerta.children[0].remove()          
-            
         } 
         
         else{ 
@@ -53,16 +53,18 @@ form.addEventListener('submit', (event) => {
             productos.push(producto)    
             localStorage.setItem("productos", JSON.stringify(productos))
             form.reset()            
-            console.log(nombre, descripcion, precio, stock) 
-        }      
+            console.log(nombre, descripcion, precio, stock)
+        } 
 })
+
+
 
 mostrarProductos.addEventListener('click', () => {
     const prodStorage = JSON.parse(localStorage.getItem('productos')) 
     divProductos.innerHTML = ""
     prodStorage.forEach((producto, indice) => {
         divProductos.innerHTML += `
-            <div class="card" id="producto${indice}" style="width: 18rem;margin:3px;">
+            <div class="card" id="producto${producto.indice}" style="width: 18rem;margin:3px;">
                 <div class="card-body">
                     <h5 class="card-title">${producto.nombre}</h5>   
                     <p class="card-text"> ${producto.descripcion}</p>                 
@@ -85,3 +87,5 @@ mostrarProductos.addEventListener('click', () => {
         })              
     })    
 })
+
+
