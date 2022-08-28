@@ -8,8 +8,6 @@ class Producto {
     }
 }
 
-//
-
 const producto1 = new Producto ("Tubo de calamar", "Tubo de calamar para rabas. Precio xkg", 1200, 30)
 const producto2 = new Producto ("Cornalitos", "Cornalitos congelados. Precio xkg", 500, 50)
 
