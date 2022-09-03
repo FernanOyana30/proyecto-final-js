@@ -54,7 +54,7 @@ fetch('./json/productos.json')
                 <h5 class="card-title">${producto.nombre}</h5>   
                 <p class="card-text"> ${producto.descripcion}</p>                 
                 <p class="card-text"> $${producto.precio}</p>
-                <p class="card-text">${producto.stock}</p>
+                <p class="card-text">${producto.stock} disponibles</p>
                 <button class="btn btn-primary">Añadir al carrito</button>                 
             </div>
         </div>  
