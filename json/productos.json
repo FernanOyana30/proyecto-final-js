@@ -1,14 +1,50 @@
 [
     {
-        "nombre": "mejillones" ,
-        "descripcion": "Mejillones congelados. Precio xkg",
-        "precio": 1500,
-        "stock": 20
+        "nombre": "Langostino pelado crudo" ,
+        "descripcion": "Langostinos limpios sin vena negra. Precio xkg",
+        "precio": 2990,
+        "stock": 48
     },
     {
-        "nombre": "mejillones pelados" ,
+        "nombre": "Tubo de calamar" ,
+        "descripcion": "Tubo de calamar pelado y desgrasado, ideal para rabas. Precio xkg",
+        "precio": 1850,
+        "stock": 50
+    },
+    {
+        "nombre": "Filet de merluza" ,
+        "descripcion": "Filet de merluza despinado y congelado a bordo. Precio xkg",
+        "precio": 870,
+        "stock": 5
+    },
+    {
+        "nombre": "Mejillones pelados y congelados" ,
         "descripcion": "Mejillones congelados. Precio xkg",
-        "precio": 1600,
+        "precio": 1664,
+        "stock": 2
+    },
+    {
+        "nombre": "Salmón rosado" ,
+        "descripcion": "Filet de salmón rosado sin espinas. Precio xkg",
+        "precio": 6599,
         "stock": 30
+    },
+    {
+        "nombre": "Filet de abadejo congelado" ,
+        "descripcion": "Filet de abadejo congelado. Precio xkg",
+        "precio": 1999,
+        "stock": 35
+    },
+    {
+        "nombre": "Tentáculos de calamar" ,
+        "descripcion": "Tentáculos congelados crudos. Precio xkg",
+        "precio": 890,
+        "stock": 30
+    },
+    {
+        "nombre": "Filet de lenguado" ,
+        "descripcion": "Filet de lenguado sin espinas. Precio xkg",
+        "precio": 1799,
+        "stock": 20
     }
 ]
