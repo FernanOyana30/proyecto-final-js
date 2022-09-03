@@ -1,0 +1,14 @@
+[
+    {
+        "nombre": "mejillones" ,
+        "descripcion": "Mejillones congelados. Precio xkg",
+        "precio": 1500,
+        "stock": 20
+    },
+    {
+        "nombre": "mejillones pelados" ,
+        "descripcion": "Mejillones congelados. Precio xkg",
+        "precio": 1600,
+        "stock": 30
+    }
+]
