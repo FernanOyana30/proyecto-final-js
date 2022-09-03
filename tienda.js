@@ -42,45 +42,11 @@ TIENDA_ARRAY.forEach(producto => {
 })
 
 const contenedorTienda2 = document.getElementById("contenedorTienda2")
-/*
-fetch('https://fakestoreapi.com/products/1')
-    .then(res=>res.json())
-    .then(({id, title, price, category, description}) => {
-        contenedorTienda2.innerHTML = `
-        <div class="card" id="product${id}" style="width: 18rem;margin:3px;">
-            <div class="card-body">
-                <h5 class="card-title">${title}</h5>   
-                <p class="card-text"> $${price}</p>                 
-                <p class="card-text"> ${category}</p>
-                <p class="card-text">${description}</p>
-                <button class="btn btn-primary">Añadir al carrito</button>                 
-            </div>
-        </div>  
-        `
-    } )
-    
-    fetch('https://fakestoreapi.com/products/2')
-    .then(res=>res.json())
-    .then(({id, title, price, category, description}) => {
-        contenedorTienda2.innerHTML = `
-        <div class="card" id="product${id}" style="width: 18rem;margin:3px;">
-            <div class="card-body">
-                <h5 class="card-title">${title}</h5>   
-                <p class="card-text"> $${price}</p>                 
-                <p class="card-text"> ${category}</p>
-                <p class="card-text">${description}</p>
-                <button class="btn btn-primary">Añadir al carrito</button>                 
-            </div>
-        </div>  
-        `
-    } )
 
-*/
-
-fetch('./json/productosArray.json')
+fetch('./json/productos.json')
 .then(response => response.json())
-.then(productosArray => {
-    productosArray.forEach((producto, indice) => {
+.then(productos => {
+    productos.forEach((producto, indice) => {
         contenedorTienda2.innerHTML += 
         `
         <div class="card" id="product${indice}" style="width: 18rem;margin:3px;">
@@ -93,7 +59,7 @@ fetch('./json/productosArray.json')
             </div>
         </div>  
         `
-    })
+    });
     
 })
 
