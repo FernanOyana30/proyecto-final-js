@@ -36,7 +36,7 @@ const stockProductos = [
 ]
 
 //DOM
-const contenedorProductos = document.getElementById('contenedorProductos')
+const contenedorTienda = document.getElementById('contenedorTienda')
 const contenedorCarrito = document.getElementById('contenedorCarrito')
 const vaciarCarrito = document.getElementById('vaciar-carrito')
 const contadorCarrito = document.getElementById('contador-carrito')
@@ -70,8 +70,8 @@ stockProductos.forEach((producto) => {
         </div>
     </div>
     `
-    contenedorProductos.appendChild(div)
-    contenedorProductos.classList.add('contenedorProductos')
+    contenedorTienda.appendChild(div)
+    contenedorTienda.classList.add('contenedorProductos')
     const boton = document.getElementById(`agregar${producto.id}`)
     boton.addEventListener('click', () => {
         agregarAlCarrito(producto.id)
