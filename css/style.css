@@ -12,6 +12,10 @@
     margin: 5px;
 }
 
+#contenedorMain{
+    padding: 50px;
+}
+
 /*ESTILOS FOOTER*/
 .lista{
     list-style: none;    
@@ -28,4 +32,9 @@
     flex-direction: row;
     justify-content: space-between;
     padding: 20px;
+}
+
+/*FILTRO*/
+.filter{
+    display: none;
 }

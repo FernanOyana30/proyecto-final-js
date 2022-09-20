@@ -8,7 +8,7 @@ class Producto {
         this.precio = parseFloat(precio)
         this.stock = parseFloat(stock)
         this.cantidad = parseFloat(cantidad)
-    }
+    }            
 }
 
 const producto1 = new Producto (1, "../img/tubo-calamar.jpg", "Tubo de calamar", "Mariscos", "Tubo de calamar para rabas. Precio xkg", 1200, 30, 1)
@@ -85,33 +85,29 @@ const agregarAlCarrito = (prodId) => {
         const prod = carrito.map ( prod => {
             if (prod.id === prodId ){
                 prod.cantidad++
+                Swal.fire({
+                    position: 'top-end',
+                    icon: 'success',
+                    title: 'Producto agregado al carrito',
+                    showConfirmButton: false,
+                    timer: 1500
+                })
             }
         })
     } else {
-        const item = stockProductos.find ((prod) => prod.id === prodId)
+        const item = stockProductos.find ((prod) => prod.id === prodId)        
         carrito.push(item)
+        Swal.fire({
+            position: 'top-end',
+            icon: 'success',
+            title: 'Producto agregado al carrito',
+            showConfirmButton: false,
+            timer: 1500
+        })
     }      
     actualizarCarrito()    
-    console.log('Producto agregado al carrito')
-}
-
-//Eliminar del carrito
-const eliminarDelCarrito = (prodId) => {
-    const item = carrito.find((prod) => prod.id === prodId)
-    const indice = carrito.indexOf(item)
-    carrito.splice(indice, 1)    
-    localStorage.setItem('carrito', JSON.stringify(carrito))
-    actualizarCarrito()
-    console.log('Producto eliminado del carrito')  
-}
-
-//Evento vaciar carrito
-vaciarCarrito.addEventListener('click', () => {
-    carrito.length = 0
-    localStorage.setItem('carrito', JSON.stringify(carrito))
-    actualizarCarrito()
-    console.log('El carrito está vacío')
-})
+    console.log('Producto agregado al carrito')    
+} 
 
 //Actualizar carrito
 const actualizarCarrito = () => {
@@ -136,6 +132,26 @@ const actualizarCarrito = () => {
     precioTotal.innerText = carrito.reduce((acc, prod) => acc + prod.precio, 0)
     precioTotal.innerText = carrito.reduce((acc , prod)=> acc + prod.precio * prod.cantidad,0)
 }
+
+//Eliminar del carrito
+const eliminarDelCarrito = (prodId) => {  
+    const item = carrito.find((prod) => prod.id === prodId)
+    const indice = carrito.indexOf(item)
+    carrito.splice(indice, 1)    
+    localStorage.setItem('carrito', JSON.stringify(carrito))
+    actualizarCarrito()
+    console.log('Producto eliminado del carrito')  
+    
+
+}
+
+//Evento vaciar carrito
+vaciarCarrito.addEventListener('click', () => {
+    carrito.length = 0
+    localStorage.setItem('carrito', JSON.stringify(carrito))
+    actualizarCarrito()
+    console.log('El carrito está vacío')
+})
 
 ////////////////////////////
 //Fetch para obtener productos de archivo .json
@@ -174,13 +190,76 @@ fetch('./json/productos.json')
         const prod = carrito.map ( prod => {
             if (prod.id === prodId ){
                 prod.cantidad++
+                Swal.fire({
+                    position: 'top-end',
+                    icon: 'success',
+                    title: 'Producto agregado al carrito',
+                    showConfirmButton: false,
+                    timer: 1500
+                })
             }
         })
     } else {
         const item = productos.find ((prod) => prod.id === prodId)
         carrito.push(item)
+        Swal.fire({
+            position: 'top-end',
+            icon: 'success',
+            title: 'Producto agregado al carrito',
+            showConfirmButton: false,
+            timer: 1500
+        })
     }      
     actualizarCarrito()    
     console.log('Producto agregado al carrito')
     }
+})
+
+//Finalizar compra
+const botonCompra = document.getElementById('botonCompra')
+
+botonCompra.addEventListener('click', () =>{
+    if (carrito.length == 0) {
+        Swal.fire('¡Tu carrito está vacío! Agrega un producto de la tienda para finalizar la compra.')
+        console.log("El carrito está vacío.")
+    } else {
+        const swalWithBootstrapButtons = Swal.mixin({ //Alerta 
+            customClass: {
+              confirmButton: 'btn btn-success',
+              cancelButton: 'btn btn-danger'
+            },
+            buttonsStyling: false
+          })
+          
+          swalWithBootstrapButtons.fire({
+            title: 'Estás a punto de comprar',
+            text: `Vas a pagar $${precioTotal.innerText}. ¿Estás seguro?`,
+            icon: 'warning',
+            showCancelButton: true,
+            confirmButtonText: '¡Sí, pagar!',
+            cancelButtonText: '¡Todavía no!',
+            reverseButtons: true
+          }).then((result) => {
+            if (result.isConfirmed) {
+              swalWithBootstrapButtons.fire(
+                '¡Compra finalizada con éxito!',
+                'Te enviaremos tus productos a domicilio.',
+                'success'
+              )                
+                carrito.length = 0
+                localStorage.setItem('carrito', JSON.stringify(carrito))
+                actualizarCarrito()
+                console.log('El carrito está vacío')                
+            } else if (
+              /* Read more about handling dismissals below */
+              result.dismiss === Swal.DismissReason.cancel
+            ) {
+              swalWithBootstrapButtons.fire(
+                '¡Compra cancelada!',
+                'Esperamos que vuelvas pronto.',
+                'error'
+              )
+            }
+          })
+    }    
 })
