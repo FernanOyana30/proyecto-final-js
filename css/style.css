@@ -8,10 +8,11 @@
     margin-top: 20px;
     margin-left: 50px;
 }
+/*Estilo para las cards de productos*/
 .tarjeta{
     margin: 5px;
 }
-
+/*Estilo para el main*/
 #contenedorMain{
     padding: 50px;
 }
